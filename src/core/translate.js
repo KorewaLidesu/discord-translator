@@ -264,8 +264,7 @@ module.exports = function(data) //eslint-disable-line complexity
 
    const opts = {
       to: data.translate.to.valid[0].iso,
-      from: from,
-      client: "webapp"
+      from: from
    };
 
    const fw = data.forward;
