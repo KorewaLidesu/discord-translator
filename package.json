@@ -26,10 +26,11 @@
     "url": "https://github.com/vkedwardli/discord-translator.git"
   },
   "dependencies": {
+    "@vitalets/google-translate-token": "^1.2.0",
     "common-tags": "^1.7.2",
     "discord.js": "^11.3.0",
     "dotenv": "^5.0.1",
-    "google-translate-api": "vkedwardli/google-translate-api",
+    "google-translate-api": "vkedwardli/google-translate-api#translate_a/t",
     "iso-639-1": "^1.3.0",
     "pg": "^8.4.2",
     "pg-hstore": "^2.3.2",
