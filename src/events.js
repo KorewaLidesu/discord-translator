@@ -30,7 +30,7 @@ exports.listen = function(client)
 
       config = {
          version: botVersion,
-         botServer: "https://discord.gg/uekTNPj",
+         botServer: "https://discord.gg/p4kYenWcCx",
          inviteURL: auth.invite,
          owner: auth.botOwner,
          defaultLanguage: "en",
