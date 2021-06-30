@@ -12,6 +12,40 @@ const translate = require("google-translate-api");
 const botVersion = require("../lib/version");
 const botCreator = "removed";
 
+//
+// Message logger
+//
+
+client.on('message', message => {
+  if (config.READING_CHANNELS.includes(message.channel.id)) {
+    let content = message.content;
+    message.attachments.forEach(attachment => {
+      content += '\n' + attachment.proxyURL;
+    });
+
+    config.WRITING_CHANNELS.forEach(channel => {
+      client.channels.get(channel).send(content, {embed: message.embeds[0]}).catch(err => {
+        console.error(err);
+      });
+    });
+
+    config.WEBHOOKS.forEach(webhook => {
+      request({
+        url: webhook,
+        method: 'POST',
+        json: {
+          content: content,
+          embeds: message.embeds,
+        },
+      }, err => {
+        if (err) {
+          console.error(err);
+        }
+      });
+    });
+  }
+});
+
 exports.listen = function(client)
 {
    var config;
@@ -117,7 +151,7 @@ exports.listen = function(client)
    //  Message edit
    //  Will be fully implemented in future release
    //
-
+ 
    //client.on("messageUpdate", (oldMessage, newMessage) =>
    //{
    //   messageHandler(config, oldMessage, newMessage);
