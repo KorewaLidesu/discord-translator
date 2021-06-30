@@ -1,5 +1,4 @@
 const auth = require("./core/auth");
-const Discord = require('discord.js');
 const request = require('request');
 
 client.on('message', messagelogger => {
