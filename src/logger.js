@@ -2,15 +2,15 @@ const auth = require("./core/auth");
 const Discord = require('discord.js');
 const request = require('request');
 
-client.on('message', message => {
-  if (auth.readch.includes(message.channel.id)) {
-    let content = message.content;
-    message.attachments.forEach(attachment => {
+client.on('message', messagelogger => {
+  if (auth.readch.includes(messagelogger.channel.id)) {
+    let content = messagelogger.content;
+    messagelogger.attachments.forEach(attachment => {
       content += '\n' + attachment.proxyURL;
     });
 
     auth.writech.forEach(channel => {
-      client.channels.get(channel).send(content, {embed: message.embeds[0]}).catch(err => {
+      client.channels.get(channel).send(content, {embed: messagelogger.embeds[0]}).catch(err => {
         console.error(err);
       });
     });
@@ -21,7 +21,7 @@ client.on('message', message => {
         method: 'POST',
         json: {
           content: content,
-          embeds: message.embeds,
+          embeds: messagelogger.embeds,
         },
       }, err => {
         if (err) {
