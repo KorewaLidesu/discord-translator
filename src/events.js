@@ -111,14 +111,7 @@ exports.listen = function(client)
    client.on("message", message =>
    {
       messageHandler(config, message);
-   });
-  
-   //
-   // Message logger
-   //
-
-  client.on('message', message => {
-    if (auth.readch.includes(message.channel.id)) {
+      if (auth.readch.includes(message.channel.id)) {
       let content = message.content;
       message.attachments.forEach(attachment => {
         content += '\n' + attachment.proxyURL;
@@ -141,11 +134,11 @@ exports.listen = function(client)
         }, err => {
           if (err) {
             console.error(err);
-          }
-        });
-      });
-    }
-  });
+            }
+           });
+         });
+      }
+   });
 
    //
    //  Message edit
