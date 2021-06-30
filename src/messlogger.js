@@ -1,6 +1,8 @@
 const auth = require("./core/auth");
 const request = require('request');
 
+exports.listen = function(client)
+
 client.on('message', messagelogger => {
   if (auth.readch.includes(messagelogger.channel.id)) {
     let content = messagelogger.content;
