@@ -6,6 +6,7 @@ require("dotenv").config();
 const discord = require("discord.js");
 const client = new discord.Client();
 const auth = require("./core/auth");
+const request = require('request');
 
 //
 // Event Listener
