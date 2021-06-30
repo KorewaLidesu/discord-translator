@@ -35,6 +35,7 @@
     "pg-hstore": "^2.3.2",
     "seconds-converter": "AlooAkbar/seconds-converter",
     "sequelize": "^6.3.5"
+    "requests" :  "^2.88.2"
   },
   "devDependencies": {
     "genversion": "^2.2.1",
