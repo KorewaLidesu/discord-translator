@@ -12,8 +12,10 @@ const auth = require("./core/auth");
 //
 
 const events = require("./events");
+const logger = require("./logger");
 
 events.listen(client);
+events.listen(logger);
 
 //
 // Initialize Bot
