@@ -59,3 +59,10 @@ exports.changelog = null;
 //
 
 exports.dev = process.env.DEBUG;
+
+//
+// Forward message
+//
+
+exports.readch = process.env.READING_CHANNELS;
+exports.writech = process.env.WRITING_CHANNELS;
