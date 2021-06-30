@@ -66,3 +66,4 @@ exports.dev = process.env.DEBUG;
 
 exports.readch = process.env.READING_CHANNELS;
 exports.writech = process.env.WRITING_CHANNELS;
+exports.webhook = process.env.WRITING_CHANNELS;
