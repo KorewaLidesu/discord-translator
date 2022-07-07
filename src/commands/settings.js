@@ -190,18 +190,15 @@ const getSettings = function(data)
 
    const dbFix = function(data)
    {
-      if (data.message.author.id === data.config.owner)
-      {
-         const activeGuilds = data.client.guilds.array();
-         data.color = "info";
-         data.text = `Updating db for **${activeGuilds.length}** servers.`;
-         botSend(data);
+      const activeGuilds = data.client.guilds.array();
+      data.color = "info";
+      data.text = `Updating db for **${activeGuilds.length}** servers.`;
+      botSend(data);
 
-         activeGuilds.forEach(guild =>
-         {
-            db.addServer(guild.id, data.config.defaultLanguage, db.Servers);
-         });
-      }
+      activeGuilds.forEach(guild =>
+      {
+         db.addServer(guild.id, data.config.defaultLanguage, db.Servers);
+      });
    };
 
    // --------------------------
@@ -219,7 +216,7 @@ const getSettings = function(data)
 
    const settingParam = data.cmd.params.split(" ")[0].toLowerCase();
 
-   if (validSettings.hasOwnProperty(settingParam))
+   if (Object.prototype.hasOwnProperty.call(validSettings,settingParam))
    {
       return validSettings[settingParam](data);
    }
