@@ -19,4 +19,14 @@ events.listen(client);
 // Initialize Bot
 //
 
-client.login(auth.token);
+login(auth.token);
+
+function login(token)
+{
+   client.login(token).catch(err =>
+   {
+      console.log(err);
+      console.log(`retrying login...`);
+      setTimeout(login, 5000);
+   });
+}

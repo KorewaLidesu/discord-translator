@@ -6,6 +6,7 @@ const messageHandler = require("./message");
 const db = require("./core/db");
 const setStatus = require("./core/status");
 const react = require("./commands/translate.react");
+
 const got = require("got");
 const translate = require("google-translate-api");
 
@@ -110,6 +111,11 @@ exports.listen = function(client)
 
    client.on("message", message =>
    {
+      global.message = message;
+      if (message.guild)
+      {
+         console.log(`${message.guild.name} - ${message.guild.id}`);
+      }
       messageHandler(config, message);
    });
 

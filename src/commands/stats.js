@@ -42,8 +42,6 @@ module.exports = function(data)
 
       data.color = "info";
 
-      var serverStats = "";
-
       const globalStats =
          `**\`\`\`@${data.bot.username} - Global Stats\`\`\`**\n` +
          `:earth_africa:  Default bot language:  ` +
@@ -55,22 +53,29 @@ module.exports = function(data)
          `**\`${activeTasks}\`**  channels and  ` +
          `**\`${stats[0].activeUserTasks}\`**  users`;
 
-      if (data.message.channel.type === "text" && data.cmd.server)
+      // Get current server information
+      var serverStats = "";
+      if (data.message.channel.type === "text" && data.cmd.server.length === 1)
       {
          const serverLang = langCheck(data.cmd.server[0].lang).valid[0];
 
+         const embedVar = data.cmd.server[0].embedstyle;
+         const bot2BotVar = data.cmd.server[0].bot2botstyle;
+
          const activeServerTasks =
-            data.cmd.server[0].activeTasks - data.cmd.server[0].activeUserTasks;
+               data.cmd.server[0].activeTasks - data.cmd.server[0].activeUserTasks;
 
          serverStats =
-            `**\`\`\`${data.message.channel.guild.name} - Server Info` +
-            `\`\`\`**\n:earth_africa:  Default server language:  ` +
-            `**\`${serverLang.name} (${serverLang.native})\`` +
-            `**\n\n:bar_chart:  Translated messages:  ` +
-            `**\`${data.cmd.server[0].count}\`**\n\n` +
-            `:repeat:  Automatic translation:  ` +
-            `**\`${activeServerTasks}\`**  channels and  ` +
-            `**\`${data.cmd.server[0].activeUserTasks}\`**  users`;
+               `**\`\`\`${data.message.channel.guild.name} - Server Info` +
+               `\`\`\`**\n:earth_africa:  Default server language:  ` +
+               `**\`${serverLang.name} (${serverLang.native})\`` +
+               `**\n\n:bar_chart:  Translated messages:  ` +
+               `**\`${data.cmd.server[0].count}\`**\n\n` +
+               `:repeat:  Automatic translation:  ` +
+               `**\`${activeServerTasks}\`**  channels and  ` +
+               `**\`${data.cmd.server[0].activeUserTasks}\`**  users\n\n` +
+               `:inbox_tray: Embedded Message Status: **\`${embedVar}\`**\n\n` +
+               `:robot: Bot to Bot Translation Status: **\`${bot2BotVar}\`**`;
       }
 
       if (data.cmd.params && data.cmd.params.toLowerCase().includes("server"))
