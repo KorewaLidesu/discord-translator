@@ -216,7 +216,7 @@ const getSettings = function(data)
 
    const settingParam = data.cmd.params.split(" ")[0].toLowerCase();
 
-   if (Object.prototype.hasOwnProperty.call(validSettings,settingParam))
+   if (validSettings.hasOwnProperty(settingParam))
    {
       return validSettings[settingParam](data);
    }
