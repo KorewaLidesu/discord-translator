@@ -59,5 +59,3 @@ exports.changelog = null;
 //
 
 exports.dev = process.env.DEBUG;
-
-
